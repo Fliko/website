@@ -22,10 +22,9 @@ mk() {
 }
 
 # Delete the generated website.
-rm    -rf .www site/wiki
-mkdir -p  .www
-mkdir -p  doc
-cd        .www
+rm    -rf docs
+mkdir -p  docs
+cd        docs
 
 # Minify the CSS using sed.
 sed ':a;N;$!ba;s/\n//g;s/: /:/g;s/ {  /{/g;s/;  /;/g;s/;}/}/g' \
@@ -49,9 +48,5 @@ while read -r page; do
         ;;
     esac
 done
-
-cp -r . ../doc
-cd ..
-rm -rf .www
 
 printf 'Build complete.\n'
